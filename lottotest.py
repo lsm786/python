@@ -23,6 +23,10 @@ class LottoGame:
         flat_numbers = [num for game in self.history for num in game]
         counter = Counter(flat_numbers)
         return counter.most_common(6)
+    
+    def generate_1000(self):
+        for _ in range(1000):
+            self.generate_numbers()
 
 
 # 🎯 객체 생성
@@ -73,6 +77,10 @@ def show_stats():
     text = "\n".join([f"{num}번 : {count}회" for num, count in stats])
     messagebox.showinfo("통계 결과", text)
 
+def auto_generate_1000():
+    game.generate_1000()
+    messagebox.showinfo("완료", "1000회 자동 생성 완료!")
+
 
 # 🎯 GUI 설정
 root = tk.Tk()
@@ -89,5 +97,8 @@ graph_btn.pack(pady=10)
 
 result_label = tk.Label(root, text="번호가 여기에 표시됩니다")
 result_label.pack(pady=20)
+
+auto_btn = tk.Button(root, text="1000회 자동 생성", command=auto_generate_1000)
+auto_btn.pack(pady=10)
 
 root.mainloop()
