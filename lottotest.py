@@ -5,10 +5,9 @@ from tkinter import messagebox
 import matplotlib.pyplot as plt
 import matplotlib.font_manager as fm
 
-plt.rcParams['font.family'] = 'AppleGothic'  # 맥 한글폰트
-plt.rcParams['axes.unicode_minus'] = False   # 마이너스 깨짐 방지
+plt.rcParams['font.family'] = 'AppleGothic'
+plt.rcParams['axes.unicode_minus'] = False
 
-# 🎯 로또 게임 클래스 (객체지향)
 class LottoGame:
     def __init__(self):
         self.history = []
@@ -29,11 +28,9 @@ class LottoGame:
             self.generate_numbers()
 
 
-# 🎯 객체 생성
 game = LottoGame()
 
 
-# 🎯 버튼 기능
 def generate():
     numbers = game.generate_numbers()
     result_label.config(text=f"🎰 {numbers}")
@@ -53,13 +50,12 @@ def show_graph():
     numbers = [num for num, count in top_13]
     counts = [count for num, count in top_13]
 
-    # ⭐ 막대 위치를 0~12로 고정
     x_positions = range(len(numbers))
 
     plt.figure()
     plt.bar(x_positions, counts)
 
-    plt.xticks(x_positions, numbers)  # 실제 숫자는 라벨로 표시
+    plt.xticks(x_positions, numbers)
     plt.xlabel("번호")
     plt.ylabel("출현 횟수")
     plt.title("로또 번호 출현 상위 13개 통계")
@@ -82,7 +78,6 @@ def auto_generate_1000():
     messagebox.showinfo("완료", "1000회 자동 생성 완료!")
 
 
-# 🎯 GUI 설정
 root = tk.Tk()
 root.title("로또 프로젝트")
 
